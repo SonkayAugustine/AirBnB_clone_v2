@@ -41,7 +41,7 @@ exec {'create index.html':
 }
 
 # link /current to /test
-exec {'link /current ot /test':
+exec {'link /current to /test':
   command  => 'sudo ln -sf /data/web_static/releases/test /data/web_static/current',
   provider => shell,
 }
