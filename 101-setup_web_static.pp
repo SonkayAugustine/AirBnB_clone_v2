@@ -30,7 +30,7 @@ exec {'mkdir /shared':
 
 # change owner of folder /date recursively
 exec {'chown-data':
-  command  => 'sudo chown -hR ubuntu:ubuntu /data',
+  command  => 'sudo chown -hR ubuntu:ubuntu /data; sudo chown -hR ubuntu:ubuntu /data/web_static'
   provider => shell,
 }
 
