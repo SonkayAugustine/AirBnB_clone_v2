@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-A script that starts a flask web application
+a script starts a Flask web_application
 '''
 
 from flask import Flask
@@ -10,8 +10,9 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
     '''
-    display Hello HBNB!
+    displays Hello HBNB!
     '''
+
     return 'Hello HBNB!'
 
 
@@ -20,7 +21,17 @@ def disp_hbnb():
     '''
     display HBNB
     '''
+
     return 'HBNB'
+
+
+@app.route('/c/<text>', strict_slashes=False)
+def c_text(text):
+    '''
+    display C followed by value of text
+    '''
+
+    return 'C {}'.format(text.replace('_', ' '))
 
 
 if __name__ == '__main__':
