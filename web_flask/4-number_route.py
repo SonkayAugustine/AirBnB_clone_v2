@@ -1,57 +1,44 @@
-#!/usr/bi/python3
-'''
-a script that starts a flask web application
+#!/usr/bin/python3
+''' flask web application for task 3
+    0x04. AirBnB clone - Web framework
 '''
 
-from flask import Flask
+from flask import Flask, escape
+
+
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def hello_hbnb():
-    '''
-    display Hello HBNB!
-    '''
-
+def hello():
+    '''returns a hello message'''
     return 'Hello HBNB!'
 
 
 @app.route('/hbnb', strict_slashes=False)
-def disp_hbnb():
-    '''
-    display HBNB
-    '''
-
+def hbnb():
+    '''returns a hello message'''
     return 'HBNB'
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def c_text(text):
-    '''
-    display C followed by the value of the text
-    '''
-
-    return 'C {}'.format(text.replace('_', ' '))
+def ctext(text):
+    '''returns a test message'''
+    return 'C {}'.format(escape(text).replace('_', ' '))
 
 
-@app.route('/python', strict_slashes=False)
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def disp_py(text='is cool'):
-    '''
-    display Python followed by default text or another
-    '''
-
-    return 'Python {}'.format(text.replace('_', ' '))
+def pythontext(text='is cool'):
+    '''returns a test message'''
+    return 'Python {}'.format(escape(text).replace('_', ' '))
 
 
-@app.route('/number/<n>', strict_slashes=False)
-def disp_num(n):
-    '''
-    display n is a number only if n is an integer
-    '''
-
-    return '{:d} is a number'.format(n)
+@app.route('/number/<int:n>', strict_slashes=False)
+def numberRoute(n):
+    '''returns a test message'''
+    return '{} is a number'.format(n)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=5000)

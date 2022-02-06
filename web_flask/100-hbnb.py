@@ -99,5 +99,6 @@ def teardown_app(exception):
     '''teardown the app , closes current sqlalchemy session'''
     storage.close()
 
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)
