@@ -6,9 +6,8 @@ a script that starts a flask web application
 from flask import Flask, render_template
 app = Flask(__name__)
 
-app.route('/', strict_slashes=False)
 
-
+@app.route('/', strict_slashes=False)
 def hello_hbnb():
     '''returns Hello HBNB!'''
     return 'Hello HBNB!'
@@ -33,10 +32,10 @@ def disp_py(text='is cool'):
     return 'Python {}'.format(text.replace('_', ' '))
 
 
-@app.route('/number/<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def disp_num(n):
     '''display n is a number only n is an integer'''
-    return '{:d} is a number'.format(n)
+    return '{} is a number'.format(n)
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
@@ -45,10 +44,10 @@ def num_temp(n):
     return render_template('5-number.html', n=n)
 
 
-@app.route('/number_odd_or_even/<n>', strict_slashes=False)
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def even_odd(n):
     '''dislpays a HTML page only if n is an integer'''
-    if int(n) % 2 == 0:
+    if n % 2 == 0:
         is_even = 'even'
     else:
         is_even = 'odd'
